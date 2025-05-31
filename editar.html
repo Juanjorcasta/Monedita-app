@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Registro</title>
+    <link href="" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    <h2>Editar Registro</h2>
+    <form action="/actualizar/{{ registro.id }}" method="POST" class="row g-3">
+        <div class="col-md-3">
+            <input type="text" name="descripcion" class="form-control" value="{{ registro.descripcion }}" required>
+        </div>
+        <div class="col-md-2">
+            <input type="number" name="monto" class="form-control" value="{{ registro.monto }}" step="0.01" required>
+        </div>
+        <div class="col-md-2">
+            <select name="tipo" class="form-select" required>
+                <option value="ingreso" {% if registro.tipo == 'ingreso' %}selected{% endif %}>Ingreso</option>
+                <option value="gasto" {% if registro.tipo == 'gasto' %}selected{% endif %}>Gasto</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <input type="date" name="fecha" class="form-control" value="{{ registro.fecha }}" required>
+        </div>
+        <div class="col-md-2">
+            <select name="categoria" class="form-select" required>
+                <option value="alimentación" {% if registro.categoria == 'alimentación' %}selected{% endif %}>Alimentación</option>
+                <option value="transporte" {% if registro.categoria == 'transporte' %}selected{% endif %}>Transporte</option>
+                <option value="salud" {% if registro.categoria == 'salud' %}selected{% endif %}>Salud</option>
+                <option value="ocio" {% if registro.categoria == 'ocio' %}selected{% endif %}>Ocio</option>
+                <option value="otros" {% if registro.categoria == 'otros' %}selected{% endif %}>Otros</option>
+            </select>
+        </div>
+        <div class="col-md-1">
+            <button type="submit" class="btn btn-primary w-100">Actualizar</button>
+        </div>
+    </form>
+    <a href="/" class="btn btn-secondary mt-3">Cancelar</a>
+</div>
+</body>
+</html>
